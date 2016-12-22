@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>#05 ツイート機能をつけてみよう</title>
+	<style>
+		body {text-align: center;}
+	</style>
+</head>
+<body>
+	<h1>キャラ診断</h1>
+	<p><input type="text" id="name" value=""></p>
+	<p><input type="button" id="getResult" value="診断！"></p>
+	<h2>診断結果</h2>
+	<p id="result">こちらに結果が表示されます。</p>
+	<div id="tweet"></div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script>
+		$(function() {
+			$("#getResult").click(function() {
+				// 名前の名称
+				var name = $("#name").val();
+				// console.log(name);
+
+				// タイプの生成
+				var types = ["勇者", "魔法使い", "戦士", "遊び人", "スーパースター",];
+				// 0-n の乱数
+				// Math.floor(Math.random() * (n + 1))
+				var type = types[Math.floor(Math.random() * types.length)];
+
+				// キャラクターの生成
+				var characters = ["賢い", "勇ましい", "かわいい", "情けない", "はらぺこ",];
+				var character = characters[Math.floor(Math.random() * characters.length)];
+
+
+				// 結果の表示
+				var result = name + "さんは「" + character + type + "」タイプです！";
+				$("#result").text(result);
+
+				// ツイートリンクの表示
+				var tweetLink = "<a href='https://twitter.com/intent/tweet'>ツイートする</a>";
+				$("#tweet").html(tweetLink);
+			});
+		});
+	</script>
+</body>
+</html>
